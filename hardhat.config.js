@@ -6,14 +6,27 @@ require("hardhat-gas-reporter")
 require("hardhat-contract-sizer")
 require("dotenv").config()
 
-const ISwapRouterAddress =
-  process.env.ISwapRouterAddress || 0xe592427a0aece92de3edee1f18e0157c05861564
-const USDCAddress =
-  process.env.USDCAddress || 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
-const DAIAddress =
-  process.env.DAIAddress || 0x6b175474e89094c44da98b954eedeac495271d0f
-const WETHAddress =
-  process.env.WETHAddress || 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+// const ISwapRouterAddress =
+//   process.env.ISwapRouterAddress || 0xe592427a0aece92de3edee1f18e0157c05861564
+// const USDCAddress =
+//   process.env.USDCAddress || 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
+// const DAIAddress =
+//   process.env.DAIAddress || 0x6b175474e89094c44da98b954eedeac495271d0f
+// const WETHAddress =
+//   process.env.WETHAddress || 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+const GOERLI_RPC_URL =
+  process.env.GOERLI_RPC_URL ||
+  "https://eth-goerli.g.alchemy.com/v2/cSjTaH_-9k_Gf9VNjKL95zldaiCNfVL9"
+const MAINNET_RPC_URL =
+  process.env.MAINNET_RPC_URL ||
+  "https://eth-mainnet.g.alchemy.com/v2/5AGf94eZJ1ybpz-34w6oxatTfu4OkAKs"
+const POLYGON_RPC_URL =
+  process.env.POLYGON_RPC_URL ||
+  "https://polygon-mainnet.g.alchemy.com/v2/d_YfR3Wb1MndlPeeFWVwjIfliPZrTnQm"
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY
+const REPORT_GAS = process.env.REPORT_GAS || false
+const PRIVATE_KEY = process.env.PRIVATE_KEY
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
 module.exports = {
   defaultNetwork: "hardhat",
@@ -47,7 +60,7 @@ module.exports = {
       chainId: 1,
     },
     polygon: {
-      url: POLYGON_MAINNET_RPC_URL,
+      url: POLYGON_RPC_URL,
       accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
       saveDeployments: true,
       chainId: 137,
