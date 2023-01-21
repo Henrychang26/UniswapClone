@@ -11,6 +11,8 @@ const networkConfig = {
     keepersUpdateInterval: "30",
     raffleEntranceFee: ethers.utils.parseEther("0.01"), // 0.01 ETH
     callbackGasLimit: "500000", // 500,000 gas
+    factory: "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+    WETH9: "0xFCFE742e19790Dd67a627875ef8b45F17DB1DaC6",
   },
   5: {
     name: "goerli",
@@ -21,10 +23,14 @@ const networkConfig = {
     raffleEntranceFee: ethers.utils.parseEther("0.01"), // 0.01 ETH
     callbackGasLimit: "500000", // 500,000 gas
     vrfCoordinatorV2: "0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D",
+    factory: "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+    WETH9: "0xFCFE742e19790Dd67a627875ef8b45F17DB1DaC6",
   },
   1: {
     name: "mainnet",
     keepersUpdateInterval: "30",
+    factory: "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+    WETH9: "0xFCFE742e19790Dd67a627875ef8b45F17DB1DaC6",
   },
 }
 

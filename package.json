@@ -9,9 +9,11 @@
     "@nomiclabs/hardhat-etherscan": "^3.1.5",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@openzeppelin/contracts": "^4.8.1",
+    "@openzeppelin/contracts-upgradeable": "^4.8.1",
     "@typechain/ethers-v5": "^10.1.0",
     "@typechain/hardhat": "^6.1.2",
     "@uniswap/sdk-core": "^3.1.1",
+    "@uniswap/v3-periphery": "^1.4.3",
     "@uniswap/v3-sdk": "^3.9.0",
     "chai": "^4.3.7",
     "dotenv": "^16.0.3",
@@ -26,5 +28,8 @@
     "solhint": "^3.3.7",
     "solidity-coverage": "^0.8.2",
     "typechain": "^8.1.0"
+  },
+  "dependencies": {
+    "@uniswap/v3-core": "^1.0.1"
   }
 }
