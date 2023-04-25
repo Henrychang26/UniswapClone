@@ -17,7 +17,9 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const INonfungiblePositionManager = await ethers.getContract(
     "INonfungiblePositionManager"
   )
+
   const iNonfungiblePositionManager = await INonfungiblePositionManager.deploy()
+
   const factory = networkConfig[chainId]["factory"]
   const WETH9 = networkConfig[chainId]["WETH9"]
   const args = [iNonfungiblePositionManager, factory, WETH9]

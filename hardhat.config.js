@@ -28,6 +28,20 @@ const REPORT_GAS = process.env.REPORT_GAS || false
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
+const DEFAULT_COMPILER_SETTINGS = {
+  version: "0.7.6",
+  settings: {
+    evmVersion: "istanbul",
+    optimizer: {
+      enabled: true,
+      runs: 1_000_000,
+    },
+    metadata: {
+      bytecodeHash: "none",
+    },
+  },
+}
+
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
@@ -105,11 +119,15 @@ module.exports = {
   },
   solidity: {
     compilers: [
+      DEFAULT_COMPILER_SETTINGS,
       {
         version: "0.7.6",
       },
+      // {
+      //   version: "0.8.0",
+      // },
       {
-        version: "0.8.0",
+        version: "0.5.0",
       },
     ],
   },

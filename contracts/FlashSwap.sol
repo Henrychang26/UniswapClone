@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: GPL-2.0-or-later
+pragma solidity >=0.7.6;
 pragma abicoder v2;
 
 import "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol";
@@ -47,7 +47,7 @@ contract Flash is IUniswapV3FlashCallback, PeripheryPayments {
 
   function initFlash(FlashParams memory params) external {
     //Find specific key
-    PoolAddress.poolKey memory poolKey = PoolAddress.poolKey({
+    PoolAddress.PoolKey memory poolKey = PoolAddress.poolKey({
       token0: params.token0,
       token1: params.token1,
       fee: params.fee1
@@ -63,7 +63,7 @@ contract Flash is IUniswapV3FlashCallback, PeripheryPayments {
       params.amount0,
       params.amount1,
       abi.encode(
-        flaFlashCallbackData({
+        FlashCallbackData({
           amount0: params.amount0,
           amount1: params.amount1,
           payer: msg.sender,
@@ -82,6 +82,9 @@ contract Flash is IUniswapV3FlashCallback, PeripheryPayments {
   ) external override {
     FlashCallbackData memory decoded = abi.decode(data, (FlashCallbackData));
     CallbackValidation.verifyCallback(factory, decoded.poolKey);
+
+    address token0 = decoded.poolKey.token0;
+    address token1 = decoded.poolKey.token1;
 
     uint256 amount1Min = LowGasSafeMath.add(decoded.amount1, fee1);
     uint256 amount0Min = LowGasSafeMath.add(decoded.amount0, fee0);

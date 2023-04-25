@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity >=0.7.6;
 pragma abicoder v2;
 
 import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
 import "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
 
-error SingleSwap_MustBeGreaterThanZero();
+// error SingleSwap_MustBeGreaterThanZero();
 
 contract SingleSwap {
   ISwapRouter public immutable swapRouter =
@@ -19,9 +19,10 @@ contract SingleSwap {
     address tokenOut,
     uint256 amountIn
   ) external payable returns (uint256 amountOut) {
-    if (amountIn <= 0) {
-      revert SingleSwap_MustBeGreaterThanZero();
-    }
+    // if (amountIn <= 0) {
+    //   revert SingleSwap_MustBeGreaterThanZero();
+    // }
+    require(amountIn > 0, "Must be greater than zero");
 
     TransferHelper.safeTransferFrom(
       tokenIn,
